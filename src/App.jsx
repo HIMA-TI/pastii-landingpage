@@ -197,7 +197,9 @@ const App = () => {
                         ) : (
                             <a href="#kontak"><Button className="hidden sm:inline-flex">Ikut Waitlist</Button></a>
                         )}
-                        <Button onClick={() => setIsMobileMenuOpen(true)} variant="ghost" size="icon" className="md:hidden text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full"><Menu className="h-5 w-5" /></Button>
+                        <Button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} variant="ghost" size="icon" className="md:hidden text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full">
+                            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                        </Button>
                     </div>
                 </div>
 
