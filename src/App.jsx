@@ -204,14 +204,15 @@ const App = () => {
                 </div>
 
                 {/* MOBILE MENU DROP */}
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {isMobileMenuOpen && (
                         <motion.div
+                            key="mobile-nav-panel"
                             initial={{ opacity: 0, y: -20, scaleY: 0.95 }}
                             animate={{ opacity: 1, y: 0, scaleY: 1 }}
                             exit={{ opacity: 0, y: -20, scaleY: 0.95 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-full left-0 w-full bg-white shadow-xl border-b border-slate-200 flex flex-col md:hidden p-4 gap-2 z-40 origin-top"
+                            className="absolute top-full left-0 w-full bg-white shadow-2xl border-b border-slate-200 flex flex-col md:hidden p-4 gap-2 z-40 origin-top"
                         >
                             <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-600 p-4 rounded-2xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">Tentang PASTII</a>
                             <a href="#fitur" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-600 p-4 rounded-2xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">Fitur Utama</a>
@@ -238,14 +239,14 @@ const App = () => {
 
                             {/* Dynamic Badge */}
                             <motion.div variants={fadeUpVariant} className="mb-6">
-                                <Badge variant="white" className="border border-emerald-100/50 shadow-sm flex flex-wrap sm:flex-nowrap gap-2 items-center pl-2 py-1 max-w-full h-auto leading-normal">
-                                    <span className={cn("rounded-full px-3 py-1 text-[9px] sm:text-[10px] uppercase font-bold text-white tracking-wider transition-colors shrink-0", isReleased ? "bg-emerald-500" : "bg-slate-800")}>
+                                <Badge variant="white" className="border border-emerald-100/50 shadow-sm flex items-center justify-start gap-2 pl-1.5 pr-3 py-1.5 w-max max-w-full">
+                                    <span className={cn("rounded-full px-2.5 py-1 text-[10px] uppercase font-extrabold text-white tracking-wider whitespace-nowrap", isReleased ? "bg-emerald-500" : "bg-slate-800")}>
                                         {isReleased ? "Rilis Beta" : "Closed Beta"}
                                     </span>
-                                    <span className="transition-all text-xs sm:text-sm font-semibold text-slate-700 pr-2 pb-0.5 sm:pb-0">
-                                        {isReleased ? "Eksklusif HIMA-TI" : "Akses Pengujian Terbatas"}
+                                    <span className="text-[11px] sm:text-xs font-bold text-slate-700 truncate min-w-0 pr-1">
+                                        {isReleased ? "Akses HIMA-TI UNIKU" : "Akses Sedang Uji Coba"}
                                     </span>
-                                    <ArrowRight className="h-4 w-4 mr-1 text-slate-400 hidden sm:block" />
+                                    <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 text-emerald-400 shrink-0" />
                                 </Badge>
                             </motion.div>
 
