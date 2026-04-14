@@ -134,6 +134,7 @@ const App = () => {
     const isReleased = false;
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [showDownloadModal, setShowDownloadModal] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const targetDate = getNextSaturday();
@@ -196,9 +197,34 @@ const App = () => {
                         ) : (
                             <a href="#kontak"><Button className="hidden sm:inline-flex">Ikut Waitlist</Button></a>
                         )}
-                        <Button variant="ghost" size="icon" className="md:hidden text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full"><Menu className="h-5 w-5" /></Button>
+                        <Button onClick={() => setIsMobileMenuOpen(true)} variant="ghost" size="icon" className="md:hidden text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full"><Menu className="h-5 w-5" /></Button>
                     </div>
                 </div>
+
+                {/* MOBILE MENU DROP */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -20, scaleY: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                            exit={{ opacity: 0, y: -20, scaleY: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 w-full bg-white shadow-xl border-b border-slate-200 flex flex-col md:hidden p-4 gap-2 z-40 origin-top"
+                        >
+                            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-600 p-4 rounded-2xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">Tentang PASTII</a>
+                            <a href="#fitur" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-600 p-4 rounded-2xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">Fitur Utama</a>
+                            <a href="#keunggulan" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-600 p-4 rounded-2xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">Keunggulan</a>
+                            <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-600 p-4 rounded-2xl hover:bg-emerald-50 hover:text-emerald-700 transition-colors">FAQ</a>
+                            <div className="pt-4 mt-2 border-t border-slate-100">
+                                {isReleased ? (
+                                    <Button onClick={() => { setIsMobileMenuOpen(false); setShowDownloadModal(true); }} className="w-full shadow-lg shadow-emerald-500/20 py-6 text-base">Download Sekarang</Button>
+                                ) : (
+                                    <a href="#kontak" onClick={() => setIsMobileMenuOpen(false)}><Button className="w-full py-6 text-base shadow-lg shadow-emerald-500/20 bg-slate-900">Ikut Waitlist</Button></a>
+                                )}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
 
             <main>
@@ -210,14 +236,14 @@ const App = () => {
 
                             {/* Dynamic Badge */}
                             <motion.div variants={fadeUpVariant} className="mb-6">
-                                <Badge variant="white" className="border border-emerald-100/50 shadow-sm gap-2 pl-2">
-                                    <span className={cn("rounded-full px-3 py-1 text-[10px] uppercase font-bold text-white tracking-wider transition-colors", isReleased ? "bg-emerald-500" : "bg-slate-800")}>
+                                <Badge variant="white" className="border border-emerald-100/50 shadow-sm flex flex-wrap sm:flex-nowrap gap-2 items-center pl-2 py-1 max-w-full h-auto leading-normal">
+                                    <span className={cn("rounded-full px-3 py-1 text-[9px] sm:text-[10px] uppercase font-bold text-white tracking-wider transition-colors shrink-0", isReleased ? "bg-emerald-500" : "bg-slate-800")}>
                                         {isReleased ? "Rilis Beta" : "Closed Beta"}
                                     </span>
-                                    <span className="transition-all text-sm font-semibold text-slate-700">
-                                        {isReleased ? "Terbuka Khusus HIMA-TI UNIKU" : "Akses Pengujian Masih Terbatas"}
+                                    <span className="transition-all text-xs sm:text-sm font-semibold text-slate-700 pr-2 pb-0.5 sm:pb-0">
+                                        {isReleased ? "Eksklusif HIMA-TI" : "Akses Pengujian Terbatas"}
                                     </span>
-                                    <ArrowRight className="h-4 w-4 mr-1 text-slate-400" />
+                                    <ArrowRight className="h-4 w-4 mr-1 text-slate-400 hidden sm:block" />
                                 </Badge>
                             </motion.div>
 
@@ -309,10 +335,10 @@ const App = () => {
                     initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUpVariant}
                 >
                     <p className="mb-8 text-center text-xs font-extrabold uppercase tracking-widest text-slate-400">Dirancang Khusus Untuk Keperluan</p>
-                    <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                        <span className="text-xl md:text-2xl font-black text-slate-800">HIMPUNAN MAHASISWA TEKNIK INFORMATIKA</span>
-                        <span className="text-xl md:text-2xl font-black text-slate-800">FKOM</span>
-                        <span className="text-xl md:text-2xl font-black text-slate-800">UNIKU</span>
+                    <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-50 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100 text-center">
+                        <span className="text-[17px] leading-tight sm:text-xl md:text-2xl font-black text-slate-800 max-w-[280px] sm:max-w-none">HIMPUNAN MAHASISWA TEKNIK INFORMATIKA</span>
+                        <span className="text-lg sm:text-xl md:text-2xl font-black text-slate-800">FKOM</span>
+                        <span className="text-lg sm:text-xl md:text-2xl font-black text-slate-800">UNIKU</span>
                     </div>
                 </motion.section>
 
