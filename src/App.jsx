@@ -326,7 +326,7 @@ const App = () => {
                         {/* HERO IMAGE */}
                         <motion.div className="relative z-20 mt-8 lg:mt-0 w-full lg:w-1/2 flex justify-center lg:justify-end" initial={{ opacity: 0, y: 120 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3, type: "spring", bounce: 0.3 }}>
                             <div className="w-full flex items-center justify-center transition-all hover:scale-[1.02] hover:-translate-y-2 duration-500 group relative lg:mr-0 lg:ml-10">
-                                <img src={heroImg} alt="Mockup PASTII App" className="w-full max-w-[120%] lg:max-w-[150%] scale-125 sm:scale-110 lg:scale-[1.35] xl:scale-[1.45] origin-center lg:origin-right h-auto object-contain drop-shadow-[0_40px_60px_rgba(16,185,129,0.2)] lg:drop-shadow-[0_50px_80px_rgba(0,0,0,0.35)] pointer-events-none" />
+                                <img src={heroImg} alt="Mockup PASTII App" className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain origin-center lg:origin-right drop-shadow-[0_40px_60px_rgba(16,185,129,0.2)] lg:drop-shadow-[0_50px_80px_rgba(0,0,0,0.35)] pointer-events-none" />
                             </div>
                         </motion.div>
                     </div>
