@@ -131,7 +131,7 @@ const getNextSaturday = () => {
  * ========================================== */
 
 const App = () => {
-    const isReleased = false;
+    const isReleased = true;
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [showDownloadModal, setShowDownloadModal] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
