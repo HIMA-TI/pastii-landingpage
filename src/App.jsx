@@ -667,7 +667,7 @@ const App = () => {
                             </div>
 
                             <div className="p-6 pt-2 flex flex-col gap-3">
-                                <a href="/downloads/pastii-beta-release.apk" className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50 hover:border-emerald-400 transition-all group group-hover:shadow-sm">
+                                <a href="/downloads/PASTII_Beta_v1.0.apk" className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50 hover:border-emerald-400 transition-all group group-hover:shadow-sm">
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 group-hover:bg-emerald-100 group-hover:text-emerald-700 transition-colors">
                                             <Smartphone className="w-6 h-6" />
